@@ -1,0 +1,1 @@
+{"version":3,"file":"provider.d.ts","sourceRoot":"","sources":["../../../src/adapters/next/provider.tsx"],"names":[],"mappings":"AAIA,OAAO,KAAK,EAAE,eAAe,EAAE,MAAM,kBAAkB,CAAC;AAExD,MAAM,WAAW,sBAAsB;IACrC,QAAQ,EAAE,KAAK,CAAC,SAAS,CAAC;IAC1B,MAAM,CAAC,EAAE,eAAe,CAAC;CAC1B;AAED;;;;;;;;;;;;;;;;;;;GAmBG;AACH,wBAAgB,iBAAiB,CAAC,EAAE,QAAQ,EAAE,MAAW,EAAE,EAAE,sBAAsB,2CAUlF"}

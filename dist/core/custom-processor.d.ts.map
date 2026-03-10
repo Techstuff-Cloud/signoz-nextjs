@@ -1,0 +1,1 @@
+{"version":3,"file":"custom-processor.d.ts","sourceRoot":"","sources":["../../src/core/custom-processor.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,YAAY,EAAE,kBAAkB,EAAE,MAAM,yBAAyB,CAAC;AAuB3E;;;GAGG;AACH,qBAAa,yBAA0B,YAAW,kBAAkB;IAClE,MAAM,CAAC,SAAS,EAAE,YAAY,GAAG,IAAI;IAYrC,QAAQ,IAAI,OAAO,CAAC,IAAI,CAAC;IAIzB,UAAU,IAAI,OAAO,CAAC,IAAI,CAAC;CAG5B"}
