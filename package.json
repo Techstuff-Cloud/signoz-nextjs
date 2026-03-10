@@ -1,5 +1,5 @@
 {
-  "name": "@your-org/telemetry",
+  "name": "@techstuff-cloud/telemetry",
   "version": "1.0.0",
   "description": "Shared OpenTelemetry logging for all frontend projects — ships logs to SigNoz",
   "license": "MIT",
