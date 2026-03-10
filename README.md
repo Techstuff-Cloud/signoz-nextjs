@@ -7,6 +7,8 @@ Ships structured logs to SigNoz — browser info, user ID, page URL and error tr
 
 ## Installation
 
+
+Move to your frontend directory and run this command
 ```bash
 npm install git+https://github.com/Techstuff-Cloud/signoz-nextjs.git
 ```
