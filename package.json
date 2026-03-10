@@ -1,0 +1,45 @@
+{
+  "name": "@your-org/telemetry",
+  "version": "1.0.0",
+  "description": "Shared OpenTelemetry logging for all frontend projects — ships logs to SigNoz",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/core/index.js",
+      "types": "./dist/core/index.d.ts"
+    },
+    "./next": {
+      "import": "./dist/adapters/next/index.js",
+      "types": "./dist/adapters/next/index.d.ts"
+    },
+    "./react": {
+      "import": "./dist/adapters/react/index.js",
+      "types": "./dist/adapters/react/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "prepare": "npm run build"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "next": ">=14"
+  },
+  "peerDependenciesMeta": {
+    "next": { "optional": true }
+  },
+  "dependencies": {
+    "@opentelemetry/api-logs": "^0.213.0",
+    "@opentelemetry/exporter-logs-otlp-http": "^0.213.0",
+    "@opentelemetry/resources": "^2.6.0",
+    "@opentelemetry/sdk-logs": "^0.213.0",
+    "ua-parser-js": "^2.0.9"
+  },
+  "devDependencies": {
+    "@types/react": "^18",
+    "@types/ua-parser-js": "^0.7.39",
+    "typescript": "^5"
+  }
+}
