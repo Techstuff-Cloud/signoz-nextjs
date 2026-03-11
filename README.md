@@ -21,6 +21,9 @@ npm install git+https://github.com/Techstuff-Cloud/signoz-nextjs.git
 ```bash
 NEXT_PUBLIC_OTEL_SERVICE_NAME=your-app-name   # shown in SigNoz to identify your project
 OTEL_EXPORTER_OTLP_ENDPOINT=http://your-signoz-collector:4318
+NEXT_PUBLIC_OTEL_LOG_LEVELS=error,warn   # OPTIONAL: for filtering logs
+NEXT_PUBLIC_APP_ENV=production    # OPTIONAL
+
 ```
 
 **Step 2 — Create the proxy route** at `app/api/telemetry/logs/route.ts`:
