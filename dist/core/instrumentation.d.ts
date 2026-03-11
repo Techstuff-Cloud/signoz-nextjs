@@ -14,6 +14,11 @@ export interface TelemetryConfig {
      * Falls back to NEXT_PUBLIC_OTEL_COLLECTOR_URL env var, then '/api/telemetry'.
      */
     collectorUrl?: string;
+    /**
+     * Deployment environment shown in SigNoz (e.g. 'production', 'staging', 'development').
+     * Falls back to NEXT_PUBLIC_APP_ENV env var, then process.env.NODE_ENV, then 'development'.
+     */
+    environment?: string;
 }
 /**
  * Initialises the OTel LoggerProvider and registers it globally.

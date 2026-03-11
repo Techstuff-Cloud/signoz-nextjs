@@ -1,4 +1,5 @@
 export type Attributes = Record<string, string | number | boolean | undefined>;
+export type LogLevel = 'debug' | 'info' | 'warn' | 'error';
 export declare function logInfo(body: string, attrs?: Attributes): void;
 export declare function logWarn(body: string, attrs?: Attributes): void;
 export declare function logError(body: string, attrs?: Attributes): void;
