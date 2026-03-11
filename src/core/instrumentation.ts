@@ -1,8 +1,11 @@
-import { LoggerProvider, BatchLogRecordProcessor } from '@opentelemetry/sdk-logs';
-import { OTLPLogExporter } from '@opentelemetry/exporter-logs-otlp-http';
-import { logs } from '@opentelemetry/api-logs';
-import { resourceFromAttributes } from '@opentelemetry/resources';
-import { CustomAttributesProcessor } from './custom-processor';
+import {
+  LoggerProvider,
+  BatchLogRecordProcessor,
+} from "@opentelemetry/sdk-logs";
+import { OTLPLogExporter } from "@opentelemetry/exporter-logs-otlp-http";
+import { logs } from "@opentelemetry/api-logs";
+import { resourceFromAttributes } from "@opentelemetry/resources";
+import { CustomAttributesProcessor } from "./custom-processor";
 
 let initialized = false;
 
@@ -23,6 +26,12 @@ export interface TelemetryConfig {
    * Falls back to NEXT_PUBLIC_OTEL_COLLECTOR_URL env var, then '/api/telemetry'.
    */
   collectorUrl?: string;
+
+  /**
+   * Deployment environment shown in SigNoz (e.g. 'production', 'staging', 'development').
+   * Falls back to NEXT_PUBLIC_APP_ENV env var, then process.env.NODE_ENV, then 'development'.
+   */
+  environment?: string;
 }
 
 /**
@@ -31,30 +40,38 @@ export interface TelemetryConfig {
  * Must only run in the browser (no-ops on the server).
  */
 export function initializeTelemetry(config: TelemetryConfig = {}): void {
-  if (initialized || typeof window === 'undefined') return;
+  if (initialized || typeof window === "undefined") return;
   initialized = true;
 
   const serviceName =
     config.serviceName ??
-    (typeof process !== 'undefined'
+    (typeof process !== "undefined"
       ? process.env.NEXT_PUBLIC_OTEL_SERVICE_NAME
       : undefined) ??
-    'unknown-service';
+    "unknown-service";
 
   const collectorUrl =
     config.collectorUrl ??
-    (typeof process !== 'undefined'
+    (typeof process !== "undefined"
       ? process.env.NEXT_PUBLIC_OTEL_COLLECTOR_URL
       : undefined) ??
-    '/api/telemetry/logs';
+    "/api/telemetry/logs";
+
+  const environment =
+    config.environment ??
+    (typeof process !== "undefined"
+      ? (process.env.NEXT_PUBLIC_APP_ENV ?? process.env.NODE_ENV)
+      : undefined) ??
+    "development";
 
   const loggerProvider = new LoggerProvider({
-    resource: resourceFromAttributes({ 'service.name': serviceName }),
+    resource: resourceFromAttributes({ 
+      "service.name": serviceName,
+      "deployment.environment": environment
+    }),
     processors: [
       new CustomAttributesProcessor(),
-      new BatchLogRecordProcessor(
-        new OTLPLogExporter({ url: collectorUrl }),
-      ),
+      new BatchLogRecordProcessor(new OTLPLogExporter({ url: collectorUrl })),
     ],
   });
 
