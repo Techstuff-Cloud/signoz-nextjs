@@ -15,6 +15,7 @@ export function logInfo(body: string, attrs: Attributes = {}): void {
     severityText: 'INFO',
     attributes: attrs,
   });
+  console.info(`[INFO] ${body}`, Object.keys(attrs).length ? attrs : '');
 }
 
 export function logWarn(body: string, attrs: Attributes = {}): void {
@@ -24,6 +25,7 @@ export function logWarn(body: string, attrs: Attributes = {}): void {
     severityText: 'WARN',
     attributes: attrs,
   });
+  console.warn(`[WARN] ${body}`, Object.keys(attrs).length ? attrs : '');
 }
 
 export function logError(body: string, attrs: Attributes = {}): void {
@@ -33,6 +35,7 @@ export function logError(body: string, attrs: Attributes = {}): void {
     severityText: 'ERROR',
     attributes: attrs,
   });
+  console.error(`[ERROR] ${body}`, Object.keys(attrs).length ? attrs : '');
 }
 
 export function logDebug(body: string, attrs: Attributes = {}): void {
@@ -42,4 +45,5 @@ export function logDebug(body: string, attrs: Attributes = {}): void {
     severityText: 'DEBUG',
     attributes: attrs,
   });
+  console.debug(`[DEBUG] ${body}`, Object.keys(attrs).length ? attrs : '');
 }
