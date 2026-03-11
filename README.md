@@ -1,4 +1,4 @@
-# @your-org/telemetry
+# @techstuff-cloud/telemetry
 
 Shared OpenTelemetry logging for **Next.js (App Router)** projects.  
 Ships structured logs to SigNoz — browser info, user ID, page URL and error tracking included out of the box.
@@ -7,8 +7,10 @@ Ships structured logs to SigNoz — browser info, user ID, page URL and error tr
 
 ## Installation
 
+
+Move to your frontend directory and run this command
 ```bash
-npm install git+https://github.com/your-org/telemetry.git
+npm install git+https://github.com/Techstuff-Cloud/signoz-nextjs.git
 ```
 
 ---
@@ -26,12 +28,12 @@ OTEL_EXPORTER_OTLP_ENDPOINT=http://your-signoz-collector:4318
 > The browser cannot POST directly to the SigNoz collector due to CORS. This Next.js route receives the payload on the same origin and forwards it server-side.
 
 ```ts
-export { POST } from '@your-org/telemetry/next';
+export { POST } from '@techstuff-cloud/telemetry/next';
 ```
 
 **Step 3 — Mount the provider** in `app/layout.tsx`:
 ```tsx
-import { TelemetryProvider } from '@your-org/telemetry/next';
+import { TelemetryProvider } from '@techstuff-cloud/telemetry/next';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -48,7 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
 **Step 4 — Log anywhere:**
 ```ts
-import { logInfo, logWarn, logError, logDebug } from '@your-org/telemetry';
+import { logInfo, logWarn, logError, logDebug } from '@techstuff-cloud/telemetry';
 
 logInfo('User signed in', { 'user.plan': 'pro' });
 logWarn('Slow query detected', { 'query.ms': 1200 });
@@ -98,5 +100,5 @@ After merging changes to this repo, bump the version in `package.json` and run i
 ```bash
 npm update @your-org/telemetry
 # or pin to a specific commit/tag:
-npm install git+https://github.com/your-org/telemetry.git#v1.2.0
+npm install git+https://github.com/Techstuff-Cloud/signoz-nextjs.git#v1.2.0
 ```
